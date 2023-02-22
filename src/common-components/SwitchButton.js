@@ -38,7 +38,7 @@ function SwitchButton({ id, user }) {
     }
     try {
       const staff_id = id;
-      const status = !event.target.checked ? 'TRUE' : 'FALSE';
+      const status = event.target.checked ? 'TRUE' : 'FALSE';
       console.log(status);
       const { data } = await updateStaffStatus(staff_id, status);
 

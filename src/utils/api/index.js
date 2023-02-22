@@ -27,7 +27,7 @@ export const updateStaff = (data) => {
   return httpService.patch(StaffUrl, data);
 };
 export const updateStaffStatus = (staff_id, status) => {
-  return httpService.patch(StaffUrl + '/status/' + staff_id + '/' + status);
+  return httpService.put(StaffUrl + '/status/' + staff_id + '/' + status);
 };
 
 export const setStaffShiftHours = (data) => {
