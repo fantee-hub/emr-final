@@ -60,8 +60,8 @@ export const updatePatientBiodata = (patient_id, data) => {
 export const getAllPatients = (page, size) => {
   return httpService.get(PatientUrl, { params: { page, size } });
 };
-export const updatePatient = (data, patient_id) => {
-  return httpService.put(PatientUrl + '/' + patient_id, data);
+export const updatePatient = (data) => {
+  return httpService.patch(PatientUrl, data);
 };
 export const deletePatient = (patient_id) => {
   return httpService.delete(PatientUrl + '/' + patient_id);
@@ -74,7 +74,7 @@ export const getAllInventoryItems = (page, size) => {
   return httpService.get(InventoryUrl, { params: { page, size } });
 };
 export const updateInventory = (data) => {
-  return httpService.patch(InventoryUrl, data);
+  return httpService.put(InventoryUrl, data);
 };
 export const deleteInventory = (inventory_id) => {
   return httpService.delete(InventoryUrl + '/' + inventory_id);

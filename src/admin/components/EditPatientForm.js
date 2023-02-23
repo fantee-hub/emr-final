@@ -15,10 +15,11 @@ export default function EditWorkerForm({ selectedPatient, user, getPatients }) {
     email: selectedPatient.email,
     phoneNumber: selectedPatient.phoneNumber,
     dob: selectedPatient.dob,
-    patient_id: selectedPatient.patient_id,
+    uuid: selectedPatient.uuid,
     PID: selectedPatient.PID
   });
-  const { name, email, phoneNumber, dob, PID, patient_id } = inputData;
+  const { name, email, phoneNumber, dob, PID } = inputData;
+
   const handleChange = (e) => {
     setInputData((prevState) => ({
       ...prevState,
@@ -48,15 +49,16 @@ export default function EditWorkerForm({ selectedPatient, user, getPatients }) {
       setAuthToken(user.token);
     }
     try {
-      const { data } = await updatePatient(inputData, patient_id);
+      const { data } = await updatePatient(inputData);
       // updatedPatient(patient_id, inputData);
+      console.log(data);
       setIsLoading(false);
       setOpen(false);
       getPatients();
       toast.success(data.message);
     } catch (error) {
       setIsLoading(false);
-      toast.error(error.response.data.message);
+      toast.error(error.message);
     }
   };
   const formDetails = [
@@ -73,7 +75,6 @@ export default function EditWorkerForm({ selectedPatient, user, getPatients }) {
       label: 'Email',
       defaultValue: email,
       isDateInput: false
-
     },
     {
       name: 'phoneNumber',
@@ -81,7 +82,6 @@ export default function EditWorkerForm({ selectedPatient, user, getPatients }) {
       label: 'Phone No.',
       defaultValue: phoneNumber,
       isDateInput: false
-
     },
     {
       name: 'dob',
@@ -89,14 +89,12 @@ export default function EditWorkerForm({ selectedPatient, user, getPatients }) {
       placeholder: 'Date of birth',
       defaultValue: new Date(dob).toDateString(),
       isDateInput: true
-
     },
     {
       name: 'PID',
       id: 'PID',
       defaultValue: PID,
-      label: 'Patient ID',
-
+      label: 'Patient ID'
     }
   ];
 
