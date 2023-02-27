@@ -17,11 +17,13 @@ import DropdownButton from '../../common-components/DropdownButton';
 import setAuthToken from '../../utils/setAuthToken';
 import { Typography, Divider } from '@material-ui/core';
 import { useCurrentUser } from '../../utils/hooks';
+// import { useDispatch } from 'react-redux';
 
 // const user = JSON.parse(localStorage.getItem('user'));
 
 const CustomizedListItem = ({ patient, doctorsList }) => {
   const user = useCurrentUser();
+  // const dispatch = useDispatch();
 
   const [open, setOpen] = useState(false);
   const [staffName, setStaffName] = useState('');
@@ -51,6 +53,7 @@ const CustomizedListItem = ({ patient, doctorsList }) => {
     event.preventDefault();
     setIsSending(true);
     const doctor = getSelectedDoctorInfo(staffName, doctorsList);
+    console.log(doctor);
 
     const toStaffId = doctor.uuid;
 
@@ -61,14 +64,15 @@ const CustomizedListItem = ({ patient, doctorsList }) => {
     }
 
     try {
-      await sendQueue(requestData);
-
+      const { data } = await sendQueue(requestData);
+      console.log(data);
       setIsSending(false);
       toast.success('Patient succesfully sent to doctor');
     } catch (error) {
       setIsSending(false);
       toast.error(error.message);
     }
+    // dispatch(user);
   };
   const dob = new Date(patient.dob).toDateString();
 

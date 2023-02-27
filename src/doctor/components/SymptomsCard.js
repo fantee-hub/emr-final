@@ -78,6 +78,7 @@ export default function SymptomCard({ sessionId, patientId, symptomsList }) {
       setChoice([...filterdArr]);
     }
   };
+
   console.log(choice);
 
   return (
@@ -98,7 +99,7 @@ export default function SymptomCard({ sessionId, patientId, symptomsList }) {
                 return (
                   <>
                     <SymptomsForm
-                      key={c}
+                      key={index}
                       symptom={c}
                       handleChange={handleChange}
                       inputData={inputData}

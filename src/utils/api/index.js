@@ -74,7 +74,7 @@ export const getAllInventoryItems = (page, size) => {
   return httpService.get(InventoryUrl, { params: { page, size } });
 };
 export const updateInventory = (data) => {
-  return httpService.put(InventoryUrl, data);
+  return httpService.patch(InventoryUrl, data);
 };
 export const deleteInventory = (inventory_id) => {
   return httpService.delete(InventoryUrl + '/' + inventory_id);

@@ -17,7 +17,8 @@ export default function EditInventoryForm({ selectedItem, getInventory, user }) 
     type: selectedItem.type,
     id: selectedItem.id
   });
-  const { name, quantity, price, type } = inputData;
+  const { name, quantity, price, type, description } = inputData;
+  console.log(name, quantity, price, type, inputData.id);
   const handleChange = (e) => {
     setInputData((prevState) => ({
       ...prevState,
@@ -75,6 +76,12 @@ export default function EditInventoryForm({ selectedItem, getInventory, user }) 
       id: 'type',
       label: 'Type',
       defaultValue: type
+    },
+    {
+      name: 'description',
+      id: 'description',
+      label: 'Description',
+      defaultValue: description
     }
   ];
 
