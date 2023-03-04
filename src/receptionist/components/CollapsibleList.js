@@ -17,13 +17,14 @@ import DropdownButton from '../../common-components/DropdownButton';
 import setAuthToken from '../../utils/setAuthToken';
 import { Typography, Divider } from '@material-ui/core';
 import { useCurrentUser } from '../../utils/hooks';
-// import { useDispatch } from 'react-redux';
+import { useDispatch } from 'react-redux';
+import { receptionist_info } from '../../redux/features/others/receptionistSlice';
 
 // const user = JSON.parse(localStorage.getItem('user'));
 
 const CustomizedListItem = ({ patient, doctorsList }) => {
   const user = useCurrentUser();
-  // const dispatch = useDispatch();
+  const dispatch = useDispatch();
 
   const [open, setOpen] = useState(false);
   const [staffName, setStaffName] = useState('');
@@ -72,7 +73,7 @@ const CustomizedListItem = ({ patient, doctorsList }) => {
       setIsSending(false);
       toast.error(error.message);
     }
-    // dispatch(user);
+    dispatch(receptionist_info(user));
   };
   const dob = new Date(patient.dob).toDateString();
 

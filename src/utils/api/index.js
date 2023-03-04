@@ -49,13 +49,13 @@ export const addNewPatients = (data) => {
   return httpService.post(PatientUrl, data);
 };
 export const addPatientBiodata = (data) => {
-  return httpService.post(PatientUrl + '/bios', data);
+  return httpService.post(PatientUrl + '/bio', data);
 };
 export const getPatientBiodata = (patientId) => {
-  return httpService.get(PatientUrl + '/bios' + '/' + patientId);
+  return httpService.get(PatientUrl + '/bio' + '/' + patientId);
 };
-export const updatePatientBiodata = (patient_id, data) => {
-  return httpService.put(PatientUrl + '/bios' + '/' + patient_id, data);
+export const updatePatientBiodata = (data) => {
+  return httpService.put(PatientUrl + '/bio', data);
 };
 export const getAllPatients = (page, size) => {
   return httpService.get(PatientUrl, { params: { page, size } });

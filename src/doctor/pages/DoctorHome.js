@@ -36,7 +36,7 @@ function DoctorHome() {
   const [searchQuery, setSearchQuery] = useState('');
   const [patientsList, setPatientsList] = useState([]);
   const [receptionistInfo, setReceptionistInfo] = useState(
-    JSON.parse(localStorage.getItem('Receptionist')) ?? []
+    JSON.parse(localStorage.getItem('Receptionist') ?? [])
   );
   const [isDoctorAvailable, setIsDoctorAvailable] = useState(
     JSON.parse(localStorage.getItem('isDoctorAvailable')) ?? false
